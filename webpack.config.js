@@ -4,7 +4,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: {
+    app: './src/index.ts',
+    api: './src/api.ts',
+  },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
@@ -50,6 +53,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx.', '.ts.', '.js'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
 };
