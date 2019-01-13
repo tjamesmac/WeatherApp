@@ -1,0 +1,9 @@
+$primary-test-colour: red;
+
+div {
+    color: $primary-test-colour;
+    display: flex;
+    p {
+        color: blueviolet;
+    }
+}
