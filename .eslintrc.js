@@ -8,5 +8,8 @@ module.exports = {
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaVersion": 8,
-      }
+    },
+    rules: {
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    }
 };
