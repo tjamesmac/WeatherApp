@@ -8,45 +8,21 @@ const apiURL: string = baseURL + API_KEY;
 
 let data = weatherCall(apiURL);
 
-interface WeatherForecast {
-
-    clouds: object
-    name: string,
-
-    // main
-    temperature: number,
-    tempMax: number,
-    tempMin: number,
-    precipitation: number,
-    humidity: number,
-
-    // sys
-    country: string,
-    sunrise: number,
-    sunset: number,
-
-    // weather
-    description: string,
-    icon: string,
-    id: number,
-
-    // wind
-    wind: object
-
-}
-
 data.then(res => console.log(res));
 data.then(res => {
-    // create new object here and then call weatherComponent build function
-    let weather: WeatherForecast = new Weather(res.weather[0].description, res.name);
+
+    // let weather: WeatherForecast = new Weather(res.weather[0].description, res.name);
+    let weather: Weather = new Weather(res);
     console.log(weather);
+    console.log(weather.getData().main);
     document.body.appendChild(weatherComponent(weather));
+
 });
 
 /* I think I need to use an interface here */
 
 // function will accept a weather object and then build accordingly
-const weatherComponent = (weather: WeatherForecast) => {
+const weatherComponent = (weather: any) => {
 
 
     const element: HTMLElement = document.createElement('div');
