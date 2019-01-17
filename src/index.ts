@@ -35,47 +35,24 @@ data.then(res => console.log(res));
 data.then(res => {
 
     let response: responseData = res;
-    console.log(response);
-    console.log(response.name);
-    console.log(response.main);
-    console.log(response.main.temp);
-    console.log(response.main.pressure);
-    console.log(response.main.humidity);
+    let name: string = response.name;
+    console.log(name);
+    let temperature: number = response.main.temp;
 
-    console.log(response.sys.country);
-    console.log(response.sys.sunrise);
-    console.log(response.sys.sunset);
-
-    console.log(response.weather[0]);
-
-
-
-
-    // document.body.appendChild(weatherComponent(weather));
+    document.body.appendChild(weatherComponent(name));
 
 });
 
-// end working block //
-
-/* I think I need to use an interface here */
-
-// function will accept a weather object and then build accordingly
 const weatherComponent = (weather: any) => {
 
-
     const element: HTMLElement = document.createElement('div');
-    let weatherDesc: HTMLElement = innerComponent(weather.description);
-    let weatherLocation: HTMLElement = innerComponent(weather.name);
-
-    // element.innerHTML = weatherLocation;
-
-    element.appendChild(weatherDesc);
-    element.appendChild(weatherLocation);
-
+    let elementData: HTMLElement = innerComponent(weather);
+    element.appendChild(elementData);
+    
     return element;
+
 }
-// using to test results
-// Don't think this is the right way to do this, but if I continued to do so, make it loop so I don't have to call it 1,000,000 times
+
 const innerComponent = (property: any) => {
 
     const element: HTMLElement = document.createElement('p');
