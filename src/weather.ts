@@ -1,14 +1,19 @@
 
-// would like to build a weather class that accepts the data from the API
+// // would like to build a weather class that accepts the data from the API
 
-export class Weather {
+// interface WeatherData {
+//     name?: string;
+// }
 
-    data: any;
+// export class Weather {
 
-    constructor(weatherData: any) {
-        this.data = weatherData;
-    }
-    getData() {
-        return this.data;
-    }
-}
+//     name: string;
+
+//     constructor(private data: any) {
+
+//     }
+
+//     getName() {
+//         return this.data;
+//     }
+// }
