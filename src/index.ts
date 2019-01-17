@@ -1,23 +1,61 @@
 import './style.scss';
 import { weatherCall } from './api';
-import { Weather } from './weather';
+// import { Weather } from './weather';
 
 const API_KEY: string = '2c0fd3dc783f393963e1175852aa9392';
 const baseURL: string = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=Blackwood,uk&appid=';
 const apiURL: string = baseURL + API_KEY;
 
-let data = weatherCall(apiURL);
+interface responseData {
 
+    name?: string;
+    main: {
+        temp: number;
+        pressure: number;
+        humidity: number;
+    }
+    sys: {
+        country: string;
+        sunrise: number
+        sunset: number
+    }
+    weather: {
+        0: {
+            description: string;
+            id: number;
+            icon: string;
+        }
+    }
+}
+
+
+// working block with the interface WeatherData //
+let data = weatherCall(apiURL);
 data.then(res => console.log(res));
 data.then(res => {
 
-    // let weather: WeatherForecast = new Weather(res.weather[0].description, res.name);
-    let weather: Weather = new Weather(res);
-    console.log(weather);
-    console.log(weather.getData().main);
-    document.body.appendChild(weatherComponent(weather));
+    let response: responseData = res;
+    console.log(response);
+    console.log(response.name);
+    console.log(response.main);
+    console.log(response.main.temp);
+    console.log(response.main.pressure);
+    console.log(response.main.humidity);
+
+    console.log(response.sys.country);
+    console.log(response.sys.sunrise);
+    console.log(response.sys.sunset);
+
+    console.log(response.weather[0]);
+
+
+
+
+    // document.body.appendChild(weatherComponent(weather));
 
 });
+
+// end working block //
 
 /* I think I need to use an interface here */
 
