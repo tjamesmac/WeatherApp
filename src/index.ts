@@ -34,22 +34,33 @@ let data = weatherCall(apiURL);
 data.then(res => console.log(res));
 data.then(res => {
 
+    // adding interface to my returned json object;
     let response: responseData = res;
+
     let name: string = response.name;
-    console.log(name);
+    let country: string = response.sys.country;
+    let nameAndCountry: string = `${name}, ${country}`;
+    
+    let description: string = response.weather[0].description;
+
     let temperature: number = response.main.temp;
 
-    document.body.appendChild(weatherComponent(name));
+    let overview: any[] = [nameAndCountry, description];
+
+    for (let prop of overview) {
+
+        weatherComponent(prop);
+
+    }
 
 });
 
 const weatherComponent = (weather: any) => {
 
-    const element: HTMLElement = document.createElement('div');
+    const element = document.getElementsByClassName('container')[0];
+    console.log(element);
     let elementData: HTMLElement = innerComponent(weather);
-    element.appendChild(elementData);
-    
-    return element;
+     element.appendChild(elementData);
 
 }
 
@@ -62,3 +73,15 @@ const innerComponent = (property: any) => {
     return element;
 
 }
+
+
+const app = () => {
+
+    const body: HTMLDivElement = document.createElement('div');
+    body.classList.add("container");
+
+    document.body.appendChild(body);
+
+}
+
+app();
