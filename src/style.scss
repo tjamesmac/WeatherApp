@@ -1,5 +1,5 @@
-$primary-test-colour: white;
-$background-color: rgba(29, 155, 29, 0.877);
+$primary-test-colour: black;
+$background-color: white;
 body {
     background-color: $background-color;
 }
@@ -9,6 +9,12 @@ div {
 }
 
 .container {
+    border: 1px solid grey;
+    border-radius: 10px;
+    max-width: 500px;
+    width: auto;
+    padding: 10px;
+    margin: auto;
     .row {
         .col {
             display: flex;
