@@ -1,10 +1,11 @@
-$primary-test-colour: red;
-
+$primary-test-colour: white;
+$background-color: rgba(29, 155, 29, 0.877);
+body {
+    background-color: $background-color;
+}
 div {
     color: $primary-test-colour;
-    p {
-        color: blueviolet;
-    }
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .container {
@@ -15,12 +16,17 @@ div {
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            align-content: center;
 
             div {
                 flex: 1 1 100%;
             }
             .title {
                 font-size: 40px;
+            }
+            .weatherIcon {
+                display: flex;
+                flex-direction: column;
             }
         }
     }
