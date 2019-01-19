@@ -32,23 +32,9 @@ interface responseData {
     }
 }
 
-
-// need to add error checking to the api call 
-
-// I want to bundle my dom elements together and build them at once
-
-// I want one function that accepts many smaller functions to compile the dom
-// elements together in one thing
-
-//  description
-//  numbers
-//  icons and stuff
-
 let data = weatherCall(apiURL);
-data.then(res => console.log(res));
 data.then(res => {
 
-    // adding interface to my returned json object;
     let response: responseData = res;
     console.log(response);
 
@@ -67,33 +53,16 @@ data.then(res => {
     weatherComponent(weatherIcon(icon, miniDesc, "weatherIcon"));
     weatherComponent(weatherData(main, "weatherIcon"));
 
-
-
-
-
-});
+})
+.catch(e => console.log(e.message));
 
 // this can be my generic function to add things to the dom
 const weatherComponent = (weather: any) => {
-
     const element = document.getElementsByClassName('col')[0];
     element.appendChild(weather);
-
 }
-
-const innerComponent = (property: any) => {
-
-    const element: HTMLElement = document.createElement('p');
-    let prop: any = property;
-    element.innerHTML = prop;
-
-    return element;
-
-}
-
 
 const app = () => {
-
     const body: HTMLDivElement = document.createElement('div');
     const row: HTMLDivElement = document.createElement('div');
     const col: HTMLDivElement = document.createElement('div');
@@ -104,7 +73,5 @@ const app = () => {
     document.body.appendChild(body);
     body.appendChild(row);
     row.appendChild(col);
-
 }
-
 app();
