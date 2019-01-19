@@ -48,7 +48,7 @@ export const weatherData = (main: any, className: string) => {
     for (let element of dater) {
 
         let weatherDataBox = document.createElement('span');
-        weatherDataBox.innerHTML = `${element}, `;
+        weatherDataBox.innerHTML = `${element} `;
         weatherData.appendChild(weatherDataBox);
 
     }
